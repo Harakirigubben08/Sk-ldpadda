@@ -1,30 +1,47 @@
 import math as meth
 import random
 from Turtletest import *
+import turtle
+import pyautogui, sys
+from pynput import keyboard
+
 """laddaturtle()"""
+färger = ["#0cedda","#25458a","#de47f5","#ff0000","#fffb00","#fffb00"]
 t=turtle.Turtle()
 t.speed(9940)
-def hörnfram(sida):
-    t.forward(120)
-    t.right(90)
+turtle.bgcolor("#abb8cc")
+turtle.screensize(600,500)
 
-def rita_cirkel(radie):
-    t.penup()
-    t.forward(radie)
-    t.right(90)
-    t.pendown()
-    for i in range(360):
-        t.forward(2*radie*3.14159265/360)
-        t.right(1)
+def on_press(key):
+    try:
+        print('alphanumeric key {0} pressed'.format(
+            key.char))
+        if key.char == "x":
+            print("AAAAAAAAAAAAAAAAAAAAAA")
+    except AttributeError:
+        print('special key {0} pressed'.format(
+            key))
 
-def mönster_rund():
-    for i in range(60):
-        rita_cirkel(random.randint(5,120))
-        t.right(90)
-        t.forward(random.randint(60,100))
 
-t.color("blue")
-mönster_rund()
+# Collect events until released
+with keyboard.Listener(
+        on_press=on_press) as listener:
+    listener.join()
 
+# ...or, in a non-blocking fashion:
+listener = keyboard.Listener(
+    on_press=on_press)
+listener.start()
+
+try:
+    while True:
+        x, y = pyautogui.position()
+        t.setx(x/4-300)
+        t.sety(-y/4+250)
+        t.color(random.choice(färger))      
+    
+except KeyboardInterrupt:
+    print('/n')
+        
 
 turtle.done()

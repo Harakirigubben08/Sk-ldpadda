@@ -1,6 +1,5 @@
 import zipfile
 import os
-import turtle
 def laddaturtle():
 
     
