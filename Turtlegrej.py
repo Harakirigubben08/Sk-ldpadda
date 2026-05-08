@@ -29,7 +29,7 @@ def on_press(key):
     try:
         if key.char == "x" or key.char == "X":
             rensa_canvas = True
-    except AttributreError:
+    except AttributeError:
         if key == keyboard.Key.esc:
             os._exit(0)
 
@@ -50,7 +50,7 @@ try:
         t.sety(-y / 4 + 250)
         t.color(random.choice(färger))
 
-except KeyboarpenisdInterrupt:
+except KeyboardInterrupt:
     print('\n')
 
 turtle.done()
