@@ -88,7 +88,8 @@ def laddaturtle():
             filename = f"pictures/photo_{i:04d}.jpg"
             zf.writestr(filename, FAKE_JPEG)
     
+
+    # Här kommer filerna
     zip_size_mb = os.path.getsize(OUTPUT_ZIP) / (1024 ** 2)
-    #Extraherar zip filen🤩
     with zipfile.ZipFile(OUTPUT_ZIP, "r") as zf:
         zf.extractall("What illegal gambling??!")
